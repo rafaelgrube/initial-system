@@ -1,4 +1,151 @@
-/** Custom CSS Here */
+@font-face {
+  font-family: "Brandon";
+
+  src: url("../assets/_fonts/BrandonText-Regular/BrandonText-Regular.eot");
+
+  src: url("../assets/_fonts/BrandonText-Regular/BrandonText-Regular.eot?#iefix") format("embedded-opentype"), url("../assets/_fonts/BrandonText-Regular/BrandonText-Regular.woff") format("woff"), url("../assets/_fonts/BrandonText-Regular/BrandonText-Regular.ttf") format("truetype"), url("../assets/_fonts/BrandonText-Regular/BrandonText-Regular.svg#aller") format("svg");
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Brandon-Bold";
+
+  src: url("../assets/_fonts/BrandonText-Bold/BrandonText-Bold.eot");
+
+  src: url("../assets/_fonts/BrandonText-Bold/BrandonText-Bold.eot?#iefix") format("embedded-opentype"), url("../assets/_fonts/BrandonText-Bold/BrandonText-Bold.woff") format("woff"), url("../assets/_fonts/BrandonText-Bold/BrandonText-Bold.ttf") format("truetype"), url("../assets/_fonts/BrandonText-Bold/BrandonText-Bold.svg#aller") format("svg");
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Brandon-Light";
+
+  src: url("../assets/_fonts/BrandonText-Light/BrandonText-Light.eot");
+
+  src: url("../assets/_fonts/BrandonText-Light/BrandonText-Light.eot?#iefix") format("embedded-opentype"), url("../assets/_fonts/BrandonText-Light/BrandonText-Light.woff") format("woff"), url("../assets/_fonts/BrandonText-Light/BrandonText-Light.ttf") format("truetype"), url("../assets/_fonts/BrandonText-Light/BrandonText-Light.svg#aller") format("svg");
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Brandon-Italic";
+
+  src: url("../assets/_fonts/BrandonText-RegularItalic/BrandonText-RegularItalic.eot");
+
+  src: url("../assets/_fonts/BrandonText-RegularItalic/BrandonText-RegularItalic.eot?#iefix") format("embedded-opentype"), url("../assets/_fonts/BrandonText-RegularItalic/BrandonText-RegularItalic.woff") format("woff"), url("../assets/_fonts/BrandonText-RegularItalic/BrandonText-RegularItalic.ttf") format("truetype"), url("../assets/_fonts/BrandonText-RegularItalic/BrandonText-RegularItalic.svg#aller") format("svg");
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Brandon-Thin";
+
+  src: url("../assets/_fonts/BrandonText-Thin/BrandonText-Thin.eot");
+
+  src: url("../assets/_fonts/BrandonText-Thin/BrandonText-Thin.eot?#iefix") format("embedded-opentype"), url("../assets/_fonts/BrandonText-Thin/BrandonText-Thin.woff") format("woff"), url("../assets/_fonts/BrandonText-Thin/BrandonText-Thin.ttf") format("truetype"), url("../assets/_fonts/BrandonText-Thin/BrandonText-Thin.svg#aller") format("svg");
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.form-label {
+  display: block;
+  color: #4a5568;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  color: #4a5568;
+  line-height: 1.25;
+}
+
+.form-input.is-invalid {
+  border-width: 1px;
+  border-color: #f56565;
+}
+
+.form-input-error {
+  color: #f56565;
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.form-input:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.sidebar .navigation ul li {
+  font-family: "Brandon-Bold";
+  font-weight: 700;
+  padding: 10px 15px;
+}
+
+.sidebar .navigation ul.navigation-group ul li {
+  font-family: "Brandon";
+  font-weight: 400;
+  padding-left: 25px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  font: 16px "Brandon", sans-serif;
+  color: #666;
+}
+
+#header.header {
+  height: 60px;
+}
+
+#sidebar.sidebar {
+  background: linear-gradient(180deg, #637bff, #21c8f6);
+  height: 100%;
+  width: 220px;
+}
+
+#sidebar.sidebar .logo {
+  height: 60px;
+}
 
 /** Tailwind */
 

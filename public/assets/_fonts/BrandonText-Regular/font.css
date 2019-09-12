@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'BrandonText-Regular';
+  src: url('BrandonText-Regular.eot');
+  src: url('BrandonText-Regular.eot?#iefix') format('embedded-opentype'),
+       url('BrandonText-Regular.svg#BrandonText-Regular') format('svg'),
+       url('BrandonText-Regular.ttf') format('truetype'),
+       url('BrandonText-Regular.woff') format('woff'),
+       url('BrandonText-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

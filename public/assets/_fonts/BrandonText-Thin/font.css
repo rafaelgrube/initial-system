@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'BrandonText-Thin';
+  src: url('BrandonText-Thin.eot');
+  src: url('BrandonText-Thin.eot?#iefix') format('embedded-opentype'),
+       url('BrandonText-Thin.svg#BrandonText-Thin') format('svg'),
+       url('BrandonText-Thin.ttf') format('truetype'),
+       url('BrandonText-Thin.woff') format('woff'),
+       url('BrandonText-Thin.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

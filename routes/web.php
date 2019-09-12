@@ -21,4 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/users/search', 'UserController@search')->name('users.search');
+Route::resource('/users', 'UserController')->parameters([
+    'login' => 'login'
+]);

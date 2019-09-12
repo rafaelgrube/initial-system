@@ -27,6 +27,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "izitoast": "^1.4.0",
         "tailwindcss": "^1.1.2"
     }
 }
