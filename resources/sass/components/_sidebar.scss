@@ -9,6 +9,14 @@
         color: white;
         text-decoration: none;
     }
+
+    &.active::before {
+        color: orange;
+        content: "brightness_1";
+        font-family: 'Material Icons';
+        font-size: .5rem;
+        margin-right: 3px;
+    }
 }
 
 .sidebar .navigation ul li:hover {
@@ -25,7 +33,17 @@
         color: white;
         text-decoration: none;
     }
+
+    &.active::before {
+        color: orange;
+        content: "brightness_1";
+        font-family: 'Material Icons';
+        font-size: .5rem;
+        margin-right: 3px;
+    }
 }
+
+
 
 .sidebar .navigation ul.navigation-group ul li:hover {
     font-family: 'Brandon-bold';

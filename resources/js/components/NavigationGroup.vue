@@ -11,11 +11,11 @@
 
 <script>
 export default {
-  props: ["title"],
+  props: ["active", "title"],
 
   data() {
     return {
-      show: false
+      show: this.active
     };
   }
 };

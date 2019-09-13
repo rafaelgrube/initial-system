@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('breadcrumb')
-  <breadcrumb :items="[
-    { title: 'Usuários', uri: '/users' },
-  ]" active="{{ isset($user) ? 'Editar' : 'Novo' }} Usuário"></breadcrumb>
+  <breadcrumb 
+    :items="[{ title: 'Usuários', uri: '/users' }]" 
+    active="{{ isset($user) ? 'Editar' : 'Novo' }} Usuário">
+  </breadcrumb>
 @endsection
 
 @section('content')

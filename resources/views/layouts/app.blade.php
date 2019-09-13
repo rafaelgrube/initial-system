@@ -13,6 +13,8 @@
   <script src="{{ asset('js/app.js') }}" defer></script>
 
   <!-- Styles -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -31,9 +33,13 @@
           <ul class="text-white">
             <li>
             <a href="{{ route('home') }}">Home</a></li>
-            <navigation-group title="Configurações">
-              <li>Empresas</li>
-              <li>
+            <navigation-group 
+              title="Configurações" 
+              active="{{ Request::is(['users*', 'companies*']) ?? false }}">
+              <li class="{{ Request::is('companies*') ? 'active' : null }}">
+                <a href="{{ route('companies.index') }}">Empresas</a>
+              </li>
+              <li class="{{ Request::is('users*') ? 'active' : null }}">
                 <a href="{{ route('users.index') }}">Usuários</a>
               </li>
             </navigation-group>
@@ -49,7 +55,7 @@
         <main class="py-4 overflow-scroll h-full w-full">
           <div class="container mx-auto px-4">
             @yield('content')
-          </div
+          </div>
         </main>
       </section>
     </div>

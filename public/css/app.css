@@ -116,6 +116,14 @@
   text-decoration: none;
 }
 
+.sidebar .navigation ul li.active::before {
+  color: orange;
+  content: "brightness_1";
+  font-family: "Material Icons";
+  font-size: 0.5rem;
+  margin-right: 3px;
+}
+
 .sidebar .navigation ul li:hover {
   padding-left: 20px;
 }
@@ -130,6 +138,14 @@
 .sidebar .navigation ul.navigation-group ul li a {
   color: white;
   text-decoration: none;
+}
+
+.sidebar .navigation ul.navigation-group ul li.active::before {
+  color: orange;
+  content: "brightness_1";
+  font-family: "Material Icons";
+  font-size: 0.5rem;
+  margin-right: 3px;
 }
 
 .sidebar .navigation ul.navigation-group ul li:hover {
