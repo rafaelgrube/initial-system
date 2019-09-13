@@ -107,12 +107,35 @@
   font-family: "Brandon-Bold";
   font-weight: 700;
   padding: 10px 15px;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.sidebar .navigation ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar .navigation ul li:hover {
+  padding-left: 20px;
 }
 
 .sidebar .navigation ul.navigation-group ul li {
   font-family: "Brandon";
   font-weight: 400;
   padding-left: 25px;
+  transition: 0.3s;
+}
+
+.sidebar .navigation ul.navigation-group ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar .navigation ul.navigation-group ul li:hover {
+  font-family: "Brandon-bold";
+  font-weight: bold;
+  padding-left: 30px;
 }
 
 * {
