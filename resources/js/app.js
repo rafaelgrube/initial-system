@@ -23,14 +23,16 @@ Vue.component('alert', require('./components/Alert.vue').default);
 Vue.component('breadcrumb', require('./components/Breadcrumb.vue').default);
 Vue.component('navigation-group', require('./components/NavigationGroup.vue').default);
 
-Vue.component('users-table', require('./components/User/Userstable.vue').default);
+Vue.component('location', require('./components/Company/Location.vue').default);
+
+Vue.component('company-table', require('./components/Company/Table.vue').default);
+Vue.component('user-table', require('./components/User/Table.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 Vue.prototype.$bus = new Vue();
 
 const app = new Vue({

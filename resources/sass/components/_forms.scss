@@ -22,3 +22,10 @@
 .form-input:focus {
     @apply outline-none shadow-outline;
 }
+
+label.required::before {
+    content: '*';
+    color: orange;
+    font-size: 1.3rem;
+    vertical-align: middle;
+}

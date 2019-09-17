@@ -103,6 +103,13 @@
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
 }
 
+label.required::before {
+  content: "*";
+  color: orange;
+  font-size: 1.3rem;
+  vertical-align: middle;
+}
+
 .sidebar .navigation ul li {
   font-family: "Brandon-Bold";
   font-weight: 700;

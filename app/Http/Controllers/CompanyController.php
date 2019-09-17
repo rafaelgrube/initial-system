@@ -14,7 +14,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('companies.index');
+        $companies = Company::get();
+        return view('companies.index', compact('companies'));
     }
 
     /**
@@ -35,7 +36,16 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'state' => 'required',
+            'city' => 'required'
+        ]);
+
+        $company = Company::create($request->except('_token'));
+
+        session()->flash('message', 'Empresa criada com sucesso');
+        return redirect()->route('companies.edit', $company);
     }
 
     /**
@@ -57,7 +67,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('companies.company', compact('company'));
     }
 
     /**
@@ -69,7 +79,16 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'state' => 'required',
+            'city' => 'required'
+        ]);
+
+        $company->update($request->all());
+
+        session()->flash('message', 'Empresa atualizada com sucesso');
+        return back();
     }
 
     /**

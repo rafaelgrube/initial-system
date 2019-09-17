@@ -21,7 +21,7 @@ class Company extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'state_id', 'city_id', 'integrator_id'];
+    protected $fillable = ['city', 'integrator_id', 'name', 'state'];
 
     /**
      * Indicates if the model should be timestamped.

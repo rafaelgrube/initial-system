@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-  <users-table :prop-users="{{ $users ?? [] }}"></users-table>
+  <user-table :prop-users="{{ $users ?? [] }}"></user-table>
 @endsection

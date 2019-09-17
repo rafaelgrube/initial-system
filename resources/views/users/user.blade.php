@@ -25,7 +25,7 @@
     <div class="pt-6 px-8">
       <div class="flex flex-wrap">
         <div class="form-group md:px-2 md:w-1/2">
-          <label class="form-label" for="name">
+          <label class="form-label required" for="name">
             Nome Completo
           </label>
           <input 
@@ -39,7 +39,7 @@
         </div>
 
         <div class="form-group md:px-2 md:w-1/2 ">
-          <label class="form-label" for="login">
+          <label class="form-label required" for="login">
             Login
           </label>
           <input 
@@ -55,7 +55,7 @@
 
       <div class="flex flex-wrap">
         <div class="form-group md:px-2 md:w-1/2">
-          <label class="form-label" for="password">
+          <label class="form-label {{ empty($user) ? 'required' : null }}" for="password">
             Senha
           </label>
           <input 
@@ -72,7 +72,7 @@
         </div>
 
         <div class="form-group md:px-2 md:w-1/2 ">
-          <label class="form-label" for="password_confirmation">
+          <label class="form-label {{ empty($user) ? 'required' : null }}" for="password_confirmation">
             Confirmação de Senha
           </label>
           <input 
@@ -86,7 +86,7 @@
       </div>
 
       <div class="form-group md:px-2 md:w-1/2">
-        <label class="form-label" for="email">
+        <label class="form-label required" for="email">
           Email
         </label>
         <input 
