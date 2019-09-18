@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Company;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,5 +49,14 @@ class User extends Authenticatable
         if ($password !== null & $password !== "") {
             $this->attributes['password'] = Hash::make($password);
         }
+    }
+
+    /**
+     * Relationships
+     */
+
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class);
     }
 }

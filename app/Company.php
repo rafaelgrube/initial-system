@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -29,4 +30,13 @@ class Company extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    /**
+     * Relationships
+     */
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

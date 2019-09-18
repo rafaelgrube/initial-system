@@ -26,7 +26,9 @@ Vue.component('navigation-group', require('./components/NavigationGroup.vue').de
 Vue.component('location', require('./components/Company/Location.vue').default);
 
 Vue.component('company-table', require('./components/Company/Table.vue').default);
+
 Vue.component('user-table', require('./components/User/Table.vue').default);
+Vue.component('user-companies', require('./components/User/Companies.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

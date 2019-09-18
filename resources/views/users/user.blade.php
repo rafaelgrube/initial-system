@@ -99,15 +99,23 @@
           required>
       </div>
     
-      <div class="mx-2">
+      <div class="flex flex-wrap items-center mx-2 mt-8">
         <button 
           type="submit"
-          class="bg-green-500 hover:bg-green-700 hover:shadow text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-3">
+          class="bg-green-500 hover:bg-green-700 hover:shadow text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-2 mr-3">
           Salvar
         </button>
+
+        @isset($user)
+          <user-companies :user="{{ $user }}" :companies="{{ $companies }}" class="mb-2"></user-companies>
+        @endisset
       </div>
     </div>
   </form>
+
+  <div>
+    
+  </div>
 
 </div>
 @endsection

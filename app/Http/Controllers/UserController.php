@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     public function user($login)
     {
-        return User::where('login', $login)->first();
+        return User::with('companies')->where('login', $login)->first();
     }
 
     /**
@@ -78,8 +79,10 @@ class UserController extends Controller
      */
     public function edit($login)
     {
+        $companies = Company::orderBy('name')->get();
         $user = $this->user($login);
-        return view('users.user', compact('user'));
+
+        return view('users.user', compact('companies', 'user'));
     }
 
     /**
@@ -129,5 +132,49 @@ class UserController extends Controller
             ->orWhere('email', 'LIKE', "%{$request->filter}%")
             ->orderBy('name')
             ->cursor();
+    }
+
+    /**
+     * Associates Company to User
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  String  $login
+     * @return \Illuminate\Http\Response
+     */
+    public function associateCompanyToUser(Request $request, $login)
+    {
+        $user = $this->user($login);
+        $user->companies()->toggle($request->company_id);
+
+        return response()->json($user->refresh()->companies, 200);
+    }
+
+    /**
+     * Attach all companies to the User
+     * 
+     * @param  String  $login
+     * @return \Illuminate\Http\Response
+     */
+    public function attachAllCompaniesToUser($login)
+    {
+        $companies = Company::get()->pluck('id');
+        $user = $this->user($login);
+        $user->companies()->attach($companies);
+
+        return response()->json($user->refresh()->companies, 200);
+    }
+
+    /**
+     * Detach all companies to the User
+     * 
+     * @param  String  $login
+     * @return \Illuminate\Http\Response
+     */
+    public function detachAllCompaniesFromUser($login)
+    {
+        $user = $this->user($login);
+        $user->companies()->detach();
+
+        return response()->json($user->refresh()->companies, 200);
     }
 }
