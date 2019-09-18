@@ -116,6 +116,12 @@ class UserController extends Controller
         return User::orderBy('name')->cursor();
     }
 
+    /**
+     * Find resources based on terms
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function search(Request $request)
     {
         return User::where('name', 'LIKE', "%{$request->filter}%")

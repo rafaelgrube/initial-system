@@ -17,8 +17,8 @@
         >
           <option value disabled selected>Ordernar Por</option>
           <option value="name">Nome</option>
-          <option value="id">Estado</option>
-          <option value="email">Cidade</option>
+          <option value="state">Estado</option>
+          <option value="city">Cidade</option>
         </select>
       </div>
 
@@ -100,7 +100,7 @@ export default {
         .then(({ data }) => {
           this.companies = data;
           this.$bus.$emit("my-alert", {
-            message: "Usuário desativado com sucesso",
+            message: "Empresa desativada com sucesso",
             type: "success"
           });
         })

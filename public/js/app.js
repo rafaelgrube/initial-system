@@ -2241,7 +2241,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.companies = data;
 
                   _this.$bus.$emit("my-alert", {
-                    message: "Usuário desativado com sucesso",
+                    message: "Empresa desativada com sucesso",
                     type: "success"
                   });
                 })["catch"](function (err) {
@@ -42884,9 +42884,9 @@ var render = function() {
               _vm._v(" "),
               _c("option", { attrs: { value: "name" } }, [_vm._v("Nome")]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "id" } }, [_vm._v("Estado")]),
+              _c("option", { attrs: { value: "state" } }, [_vm._v("Estado")]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "email" } }, [_vm._v("Cidade")])
+              _c("option", { attrs: { value: "city" } }, [_vm._v("Cidade")])
             ]
           )
         ]),

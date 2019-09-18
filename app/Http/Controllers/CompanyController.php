@@ -99,6 +99,22 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+        return Company::orderBy('name')->cursor();
+    }
+
+    /**
+     * Find resources based on terms
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        return Company::where('name', 'LIKE', "%{$request->filter}%")
+            ->orWhere('state', 'LIKE', "%{$request->filter}%")
+            ->orWhere('city', 'LIKE', "%{$request->filter}%")
+            ->orderBy('name')
+            ->cursor();
     }
 }

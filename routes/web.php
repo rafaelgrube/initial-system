@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::get('/companies/search', 'CompanyController@search')->name('companies.search');
 Route::resource('/companies', 'CompanyController');
 
 Route::get('/users/search', 'UserController@search')->name('users.search');
