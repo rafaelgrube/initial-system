@@ -6,7 +6,7 @@
       class="btn btn-outline-primary hover:shadow"
       data-toggle="modal"
       data-target="#userCompanies"
-    >Empresas</button>
+    >Empresas do Usuário</button>
 
     <!-- Modal -->
     <div

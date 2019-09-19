@@ -20,6 +20,7 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
+
 <body>
   <div id="app" class="bg-gray-100">
 
@@ -49,7 +50,12 @@
       </aside>
 
       <section class="w-full h-full">
-        <header id="header" class="bg-white header"></header>
+        <header id="header" class="bg-white header">
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button class="btn btn-link" type="submit">Logout</button>
+          </form>
+        </header>
         
         @yield('breadcrumb')
 

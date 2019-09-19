@@ -43377,7 +43377,7 @@ var render = function() {
           "data-target": "#userCompanies"
         }
       },
-      [_vm._v("Empresas")]
+      [_vm._v("Empresas do Usuário")]
     ),
     _vm._v(" "),
     _c(
