@@ -50,11 +50,18 @@
       </aside>
 
       <section class="w-full h-full">
-        <header id="header" class="bg-white header">
-          <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button class="btn btn-link" type="submit">Logout</button>
-          </form>
+        <header id="header" class="bg-white header flex items-center w-full">
+          <div class="flex flex-1 justify-end items-center">
+            <div>
+              {{ auth()->user()->name }}
+            </div>
+            <form action="{{ route('logout') }}" method="POST">
+              @csrf
+              <button class="btn btn-link flex" type="submit">
+                <i class="material-icons">exit_to_app</i>
+              </button>
+            </form>
+          </div>
         </header>
         
         @yield('breadcrumb')

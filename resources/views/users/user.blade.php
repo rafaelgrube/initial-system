@@ -35,7 +35,8 @@
             type="text"
             value="{{ $user->name ?? old('name') }}" 
             placeholder="Nome Completo" 
-            required>
+            required
+            autocomplete="name">
         </div>
 
         <div class="form-group md:px-2 md:w-1/2 ">
@@ -64,7 +65,8 @@
             name="password" 
             type="password" 
             placeholder="Senha" 
-            {{ empty($user) ? 'required' : null }}>
+            {{ empty($user) ? 'required' : null }}
+            autocomplete="new-password">
           
           @error('password')
             <p class="form-input-error">{{ $message }}</p>
@@ -72,12 +74,12 @@
         </div>
 
         <div class="form-group md:px-2 md:w-1/2 ">
-          <label class="form-label {{ empty($user) ? 'required' : null }}" for="password_confirmation">
+          <label class="form-label {{ empty($user) ? 'required' : null }}" for="password-confirm">
             Confirmação de Senha
           </label>
           <input 
             class="form-input" 
-            id="passwordConfirmation" 
+            id="password-confirm" 
             name="password_confirmation" 
             type="password" 
             placeholder="Confirmação de Senha" 

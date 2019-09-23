@@ -10,22 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/companies/search', 'CompanyController@search')->name('companies.search');
-Route::resource('/companies', 'CompanyController');
+    Route::get('/companies/search', 'CompanyController@search')->name('companies.search');
+    Route::resource('/companies', 'CompanyController');
 
-Route::post('/users/{login}/companies/attach-all', 'UserController@attachAllCompaniesToUser');
-Route::post('/users/{login}/companies/detach-all', 'UserController@detachAllCompaniesFromUser');
-Route::post('/users/{login}/companies', 'UserController@associateCompanyToUser');
-Route::get('/users/search', 'UserController@search')->name('users.search');
-Route::resource('/users', 'UserController')->parameters([
-    'login' => 'login'
-]);
+    Route::post('/users/{login}/companies/attach-all', 'UserController@attachAllCompaniesToUser');
+    Route::post('/users/{login}/companies/detach-all', 'UserController@detachAllCompaniesFromUser');
+    Route::post('/users/{login}/companies', 'UserController@associateCompanyToUser');
+    Route::get('/users/search', 'UserController@search')->name('users.search');
+    Route::resource('/users', 'UserController')->parameters([
+        'login' => 'login'
+    ]);
+});

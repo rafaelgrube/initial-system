@@ -25,8 +25,25 @@
   <div id="app" class="w-full">
     <div class="flex flex-wrap h-full w-full">
       <div class="w-full md:w-1/2" style="background: linear-gradient(180deg, #45A6E3, #4E87EC);">
-        @yield('content')
+        <div class="h-full mx-auto">
+          <div class="flex flex-column space-between h-full">
+
+            <div class="flex flex-1 justify-center items-center">
+              <h1 class="font-bold text-center text-white">Logo</h1>
+            </div>
+
+            <div class="justify-center max-w-xl mx-auto w-full flex-1">
+              @yield('content')
+            </div>
+
+            <div class="flex justify-center items-end flex-1 text-white pb-2">
+              @ {{ Carbon\Carbon::now()->year }}. Todos os direitos reservados.
+            </div>
+
+          </div>
+        </div>
       </div>
+      
       <div class="hidden md:block md:w-1/2 bg-gray-200">
         <div class="h-full flex flex-column justify-center">
           <div class="container mx-auto">
