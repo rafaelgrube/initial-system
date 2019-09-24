@@ -10,7 +10,7 @@
 @section('content')
 <div>
 
-  <form method="POST" action="{{ isset($user) ? route('users.update', $user->login) : route('users.store') }}" class="bg-white shadow-md rounded pb-8 mb-4">
+  <form method="POST" action="{{ isset($user) ? route('users.update', $user->username) : route('users.store') }}" class="bg-white shadow-md rounded pb-8 mb-4">
 
     @csrf
 
@@ -40,15 +40,15 @@
         </div>
 
         <div class="form-group md:px-2 md:w-1/2 ">
-          <label class="form-label required" for="login">
+          <label class="form-label required" for="username">
             Login
           </label>
           <input 
             class="form-input" 
-            id="login" 
-            name="login" 
+            id="username" 
+            name="username" 
             type="text" 
-            value="{{ $user->login ?? old('login') }}" 
+            value="{{ $user->username ?? old('username') }}" 
             placeholder="Login" 
             required>
         </div>
@@ -87,18 +87,32 @@
         </div>
       </div>
 
-      <div class="form-group md:px-2 md:w-1/2">
-        <label class="form-label required" for="email">
-          Email
-        </label>
-        <input 
-          class="form-input" 
-          id="email" 
-          name="email" 
-          type="email" 
-          value="{{ $user->email ?? old('email') }}" 
-          placeholder="Email" 
-          required>
+      <div class="flex flex-wrap">
+        <div class="form-group md:px-2 md:w-1/2">
+          <label class="form-label required" for="email">
+            Email
+          </label>
+          <input 
+            class="form-input" 
+            id="email" 
+            name="email" 
+            type="email" 
+            value="{{ $user->email ?? old('email') }}" 
+            placeholder="Email" 
+            required>
+        </div>
+
+        <div class="form-group md:px-2 md:w-1/2">
+          <label class="form-label required" for="role">Grupo</label>
+          <select name="role_id" id="role" class="form-select form-input" required>
+            <option disabled selected>Selecione um grupo</option>
+            @foreach ($roles as $role)
+              <option value="{{ $role->id }}" {{ isset($user->role_id) && $user->role_id === $role->id ? 'selected' : null }}>
+                {{ $role->name }}
+              </option>
+            @endforeach
+          </select>
+        </div>
       </div>
     
       <div class="flex flex-wrap items-center mx-2 mt-8">

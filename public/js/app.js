@@ -2719,7 +2719,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     destroy: function () {
       var _destroy = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(login) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(username) {
         var _this = this;
 
         var uri;
@@ -2727,7 +2727,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                uri = "/users/".concat(login);
+                uri = "/users/".concat(username);
                 _context.next = 3;
                 return axios["delete"](uri).then(function (_ref) {
                   var data = _ref.data;
@@ -43632,7 +43632,7 @@ var render = function() {
               _vm._v(" "),
               _c("option", { attrs: { value: "name" } }, [_vm._v("Nome")]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "login" } }, [_vm._v("Login")]),
+              _c("option", { attrs: { value: "username" } }, [_vm._v("Login")]),
               _vm._v(" "),
               _c("option", { attrs: { value: "email" } }, [_vm._v("Email")])
             ]
@@ -43690,7 +43690,7 @@ var render = function() {
                     return _c("tr", { key: "user" + index }, [
                       _c("td", [_vm._v(_vm._s(user.name))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(user.login))]),
+                      _c("td", [_vm._v(_vm._s(user.username))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(user.email))]),
                       _vm._v(" "),
@@ -43711,7 +43711,7 @@ var render = function() {
                                   staticClass:
                                     "text-blue-600 hover:text-blue-700",
                                   attrs: {
-                                    href: "/users/" + user.login + "/edit",
+                                    href: "/users/" + user.username + "/edit",
                                     role: "button"
                                   }
                                 },
@@ -43730,7 +43730,7 @@ var render = function() {
                                   attrs: { role: "button" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.destroy(user.login)
+                                      return _vm.destroy(user.username)
                                     }
                                   }
                                 },

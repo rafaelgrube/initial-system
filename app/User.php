@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Company;
+use App\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'name', 'password', 'username'
+        'email', 'name', 'password', 'username', 'role_id'
     ];
 
     /**
@@ -60,5 +61,10 @@ class User extends Authenticatable
     public function companies()
     {
         return $this->belongsToMany(Company::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

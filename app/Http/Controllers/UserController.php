@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -12,12 +13,22 @@ class UserController extends Controller
     /**
      * Get a resource in the storage.
      *
-     * @param String $login
+     * @return App\Role $roles
+     */
+    public function roles()
+    {
+        return Role::groups()->get();
+    }
+
+    /**
+     * Get a resource in the storage.
+     *
+     * @param String $username
      * @return App\User
      */
-    public function user($login)
+    public function user($username)
     {
-        return User::with('companies')->where('login', $login)->first();
+        return User::with('companies')->where('username', $username)->first();
     }
 
     /**
@@ -38,7 +49,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.user');
+        $roles = $this->roles();
+        return view('users.user', compact('roles'));
     }
 
     /**
@@ -50,58 +62,61 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'email' => 'required|email',
             'name' => 'required',
-            'login' => 'required',
             'password' => 'nullable|required_with:password_confirmation|string|confirmed',
-            'email' => 'required|email'
+            'role_id' => 'required',
+            'username' => 'required',
         ]);
 
         $user = User::create($request->except('_token'));
 
         session()->flash('message', 'Usuário criado com sucesso');
-        return redirect()->route('users.edit', $user->login);
+        return redirect()->route('users.edit', $user->username);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  String  $login
+     * @param  String  $username
      * @return \Illuminate\Http\Response
      */
-    public function show($login)
+    public function show($username)
     { }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  String  $login
+     * @param  String  $username
      * @return \Illuminate\Http\Response
      */
-    public function edit($login)
+    public function edit($username)
     {
         $companies = Company::orderBy('name')->get();
-        $user = $this->user($login);
+        $roles = $this->roles();
+        $user = $this->user($username);
 
-        return view('users.user', compact('companies', 'user'));
+        return view('users.user', compact('companies', 'roles', 'user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  String  $login
+     * @param  String  $username
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $login)
+    public function update(Request $request, $username)
     {
         $request->validate([
+            'email' => 'required|email',
             'name' => 'required',
-            'login' => 'required',
             'password' => 'nullable|required_with:password_confirmation|string|confirmed',
-            'email' => 'required|email'
+            'role_id' => 'required',
+            'username' => 'required',
         ]);
 
-        $this->user($login)->update($request->all());
+        $this->user($username)->update($request->all());
 
         session()->flash('message', 'Usuário atualizado com sucesso');
         return back();
@@ -110,12 +125,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  String  $login
+     * @param  String  $username
      * @return \Illuminate\Http\Response
      */
-    public function destroy($login)
+    public function destroy($username)
     {
-        $this->user($login)->delete();
+        $this->user($username)->delete();
         return User::orderBy('name')->cursor();
     }
 
@@ -128,7 +143,7 @@ class UserController extends Controller
     public function search(Request $request)
     {
         return User::where('name', 'LIKE', "%{$request->filter}%")
-            ->orWhere('login', 'LIKE', "%{$request->filter}%")
+            ->orWhere('username', 'LIKE', "%{$request->filter}%")
             ->orWhere('email', 'LIKE', "%{$request->filter}%")
             ->orderBy('name')
             ->cursor();
@@ -138,12 +153,12 @@ class UserController extends Controller
      * Associates Company to User
      * 
      * @param  \Illuminate\Http\Request  $request
-     * @param  String  $login
+     * @param  String  $username
      * @return \Illuminate\Http\Response
      */
-    public function associateCompanyToUser(Request $request, $login)
+    public function associateCompanyToUser(Request $request, $username)
     {
-        $user = $this->user($login);
+        $user = $this->user($username);
         $user->companies()->toggle($request->company_id);
 
         return response()->json($user->refresh()->companies, 200);
@@ -152,13 +167,13 @@ class UserController extends Controller
     /**
      * Attach all companies to the User
      * 
-     * @param  String  $login
+     * @param  String  $username
      * @return \Illuminate\Http\Response
      */
-    public function attachAllCompaniesToUser($login)
+    public function attachAllCompaniesToUser($username)
     {
         $companies = Company::get()->pluck('id');
-        $user = $this->user($login);
+        $user = $this->user($username);
         $user->companies()->attach($companies);
 
         return response()->json($user->refresh()->companies, 200);
@@ -167,12 +182,12 @@ class UserController extends Controller
     /**
      * Detach all companies to the User
      * 
-     * @param  String  $login
+     * @param  String  $username
      * @return \Illuminate\Http\Response
      */
-    public function detachAllCompaniesFromUser($login)
+    public function detachAllCompaniesFromUser($username)
     {
-        $user = $this->user($login);
+        $user = $this->user($username);
         $user->companies()->detach();
 
         return response()->json($user->refresh()->companies, 200);

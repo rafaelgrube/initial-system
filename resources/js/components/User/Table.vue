@@ -17,7 +17,7 @@
         >
           <option value disabled selected>Ordernar Por</option>
           <option value="name">Nome</option>
-          <option value="login">Login</option>
+          <option value="username">Login</option>
           <option value="email">Email</option>
         </select>
       </div>
@@ -46,12 +46,12 @@
           <tbody>
             <tr v-for="(user, index) in users" :key="`user${index}`">
               <td>{{ user.name }}</td>
-              <td>{{ user.login }}</td>
+              <td>{{ user.username }}</td>
               <td>{{ user.email }}</td>
               <td class="text-center w-px whitespace-no-wrap">
                 <div class="flex items-center space-around justify-center">
                   <a
-                    :href="`/users/${user.login}/edit`"
+                    :href="`/users/${user.username}/edit`"
                     class="text-blue-600 hover:text-blue-700"
                     role="button"
                   >Editar</a>
@@ -59,7 +59,7 @@
                   <span
                     class="text-red-600 hover:text-red-700"
                     role="button"
-                    @click="destroy(user.login)"
+                    @click="destroy(user.username)"
                   >Desativar</span>
                 </div>
               </td>
@@ -92,8 +92,8 @@ export default {
   },
 
   methods: {
-    async destroy(login) {
-      const uri = `/users/${login}`;
+    async destroy(username) {
+      const uri = `/users/${username}`;
 
       return await axios
         .delete(uri)
