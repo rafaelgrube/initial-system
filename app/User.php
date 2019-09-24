@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Company;
+use App\Permission;
 use App\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -54,9 +55,14 @@ class User extends Authenticatable
         }
     }
 
-    /**
-     * Relationships
-     */
+    /** Mutators */
+
+    public function getPermissionsAttribute()
+    {
+        return $this->role->permissions->pluck('name');
+    }
+
+    /** Relationships */
 
     public function companies()
     {
@@ -66,5 +72,17 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->role_id === 1;
+    }
+
+    /** Scopes */
+
+    public function scopeUsers()
+    {
+        return $this->where('role_id', '<>', 1);
     }
 }

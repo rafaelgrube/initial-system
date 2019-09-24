@@ -2,21 +2,17 @@
 
 namespace App;
 
-use App\Permission;
-use App\User;
+use App\Role;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Role extends Model
+class Permission extends Model
 {
-    use SoftDeletes;
-
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'roles';
+    protected $table = 'permissions';
 
     /**
      * The attributes that are mass assignable.
@@ -34,20 +30,8 @@ class Role extends Model
 
     /** Relationships */
 
-    public function permissions()
+    public function roles()
     {
-        return $this->belongsToMany(Permission::class);
-    }
-
-    public function user()
-    {
-        return $this->hasMany(User::class);
-    }
-
-    /** Scopes */
-
-    public function scopeGroups($query)
-    {
-        return $query->where('id', '<>', 1);
+        return $this->belongsToMany(Role::class);
     }
 }
