@@ -7,20 +7,19 @@
     <ul class="text-white">
       <li class="{{ Route::is('home') ? 'active' : null }}">
         <a href="{{ route('home') }}">Home</a>
-        @can('update-alert')
-
-        @endcan
       </li>
-      <navigation-group 
-        title="Configurações" 
-        active="{{ Request::is(['users*', 'companies*']) ?? false }}">
-        <li class="{{ Request::is('companies*') ? 'active' : null }}">
-          <a href="{{ route('companies.index') }}">Empresas</a>
-        </li>
-        <li class="{{ Request::is('users*') ? 'active' : null }}">
-          <a href="{{ route('users.index') }}">Usuários</a>
-        </li>
-      </navigation-group>
+      @can('show-configs')
+        <navigation-group 
+          title="Configurações" 
+          active="{{ Request::is(['users*', 'companies*']) ?? false }}">
+          <li class="{{ Request::is('companies*') ? 'active' : null }}">
+            <a href="{{ route('companies.index') }}">Empresas</a>
+          </li>
+          <li class="{{ Request::is('users*') ? 'active' : null }}">
+            <a href="{{ route('users.index') }}">Usuários</a>
+          </li>
+        </navigation-group>
+      @endcan
     </ul>
   </div>
 </aside>

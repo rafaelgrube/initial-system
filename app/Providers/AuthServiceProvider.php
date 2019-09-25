@@ -6,6 +6,7 @@ use App\Permission;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -27,10 +28,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        foreach (Permission::all() as $permission) {
-            $gate->define($permission->name, function ($user) use ($permission) {
-                return $user->permissions->contains($permission->name) || $user->isSuperAdmin();
-            });
+        if (Schema::hasTable('permissions')) {
+            foreach (Permission::all() as $permission) {
+                $gate->define($permission->name, function ($user) use ($permission) {
+                    return $user->permissions->contains($permission->name) || $user->isSuperAdmin();
+                });
+            }
         }
     }
 }
